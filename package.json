@@ -1,0 +1,37 @@
+{
+  "name": "redis-key-watcher",
+  "version": "0.0.1",
+  "description": "Redis-keys expiration handler and updater",
+  "main": "./lib/index.js",
+  "scripts": {
+    "clean": "rm -rf ./lib/*",
+    "prebuild": "npm run clean && npm run lint",
+    "build": "./node_modules/.bin/babel --source-maps --copy-files -d ./lib ./src",
+    "lint": "./node_modules/.bin/eslint ./src",
+    "test": "blue-tape -r babel-register ./src/**/*.spec.js | tap-spec",
+    "patch": "npm run build && npm version patch && git push origin --follow-tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lttb/redis-key-watcher.git"
+  },
+  "author": "Kenzhaev Artur <enload@yandex.ru>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.4",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "blue-tape": "^0.2.0",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "tap-spec": "^4.1.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.6.1",
+    "ioredis": "^1.15.1"
+  }
+}
